@@ -10,3 +10,8 @@ VScode, Netbeans, or Eclipse.
 ![login](https://user-images.githubusercontent.com/130123956/232953433-ad6d2aea-10f2-47c7-bcbf-23a5f554fb3f.png)
 
 ![dashboard](https://user-images.githubusercontent.com/130123956/232953563-4741cd1e-48df-4c78-8982-eb1da7e7da8b.png)
+
+
+Admin login 
+Username:admin 
+Password:admin
