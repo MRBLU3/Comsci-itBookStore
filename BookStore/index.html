@@ -1,0 +1,301 @@
+<?php
+include "ck_session.php";
+if(isSessionAction()){
+  header("location: dashboard.php");
+}
+?>
+<?php
+
+
+include "conn.php";
+
+if(isset($_POST['send'])){
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $number = $_POST['number'];
+    $msg = $_POST['message'];
+ 
+    $select_message = mysqli_query($conn, "SELECT * FROM `message` WHERE name = '$name' AND email = '$email' AND number = '$number' AND message = '$msg'") or die('query failed');
+ 
+    if(mysqli_num_rows($select_message) > 0){
+    }else{
+       mysqli_query($conn, "INSERT INTO `message` (name, email, number, message) VALUES('$name', '$email', '$number', '$msg')") or die('query failed');
+    }
+ 
+ }
+
+?>
+<?php
+
+
+include "conn.php";
+
+if(isset($_POST['order_book'])){
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $number = $_POST['number'];
+    $quantity = $_POST['quantity'];
+    $order_name = $_POST['order_name'];
+    $address = $_POST['address'];
+ 
+    $select_order = mysqli_query($conn, "SELECT * FROM `orderdb` WHERE name = '$name' AND email = '$email' AND number = '$number' AND quantity = '$quantity' AND order_name = '$order_name' AND address = '$address'") or die('query failed');
+ 
+    if(mysqli_num_rows($select_order) > 0){
+    }else{
+       mysqli_query($conn, "INSERT INTO `orderdb` (name, email, number, quantity, order_name, address) VALUES('$name', '$email', '$number', '$quantity', '$order_name', '$address')") or die('query failed');
+    }
+ 
+ }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Geek</title>
+
+    <link rel="icon" href="images/code.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        
+    <link rel="stylesheet" href="css/style1.css">
+
+
+</head>
+<body>
+<header>
+
+    <a href="index.html" class="logo"><i class="fas fa-code"></i>Code Geek</a>
+
+    <div id="menu" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a class="" href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#product">product</a></li>
+            <li><a href="#order">Order</a></li>
+            <li><a href="#contact">contact</a></li>
+            <li><a href="admin.php">Admin</a></li>
+        </ul>
+    </nav>
+    
+
+</header>
+
+<!-- heading section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h1>best quality programming books for you</h1>
+        <p>Learn programming.</p>
+        <a href="#product"><button class="btn">order now</button></a>
+    </div>
+
+    <div class="image">
+        <img src="images/prog.jpg" alt="">
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <div class="image">
+        <img src="images/prog.png" alt="">
+    </div>
+
+    <div class="content">
+        <h1 class="heading">about product</h1>
+        <h3>learn programming with our quality products</h3>
+        <p>learn basic programming with our product.</p>
+        <ul>
+            <li> <i class="fas fa-check-double"></i> quick guide </li>
+            <li> <i class="fas fa-check-double"></i> easy step by step </li>
+            <li> <i class="fas fa-check-double"></i> easy to learn </li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- Product section starts  -->
+
+<section class="product" id="product">
+
+<h1 class="heading">products</h1>
+
+<h1 class="title">affordable books at greate price</h1>
+
+<div class="box-container">
+
+    <div class="box">
+        <h3>B-1</h3>
+        <img src="images/item1.jpg" alt="">
+        <span class="price">₱500</span>
+        <a href="#order"><button class="btn">buy now</button></a>
+    </div>
+
+    <div class="box">
+        <h3>B-2</h3>
+        <img src="images/item2.jpg" alt="">
+        <span class="price">₱400</span>
+        <a href="#order"><button class="btn">buy now</button></a>
+    </div>
+
+    <div class="box">
+        <h3>B-3</h3>
+        <img src="images/item3.jpg" alt="">
+        <span class="price">₱600</span>
+        <a href="#order"><button class="btn">buy now</button></a>
+    </div>
+
+    <div class="box">
+        <h3>B-4</h3>
+        <img src="images/item4.jpg" alt="">
+        <span class="price">₱550</span>
+        <a href="#order"><button class="btn">buy now</button></a>
+    </div>
+
+</div>
+
+</section>
+
+<!-- Product section ends -->
+
+ <!-- Order section starts -->
+
+ <section class="order" id="order">
+
+    <h1 class="heading">Order now</h1>
+
+        <div class="order_main">
+
+            <div class="order_image">
+                <img src="images/item3.jpg">
+            </div>
+
+            <form action="#" method="POST">
+
+                <div class="input">
+                    <b>Name</b><br>
+                    <input type="text" name="name" placeholder="you name" required>
+                </div>
+
+                <div class="input">
+                    <b>Email</b><br>
+                    <input type="email" name="email" placeholder="you email" required>
+                </div>
+
+                <div class="input">
+                    <b>Number</b><br>
+                    <input type="number" name="number" placeholder="you number" required>
+                </div>
+
+                <div class="input">
+                    <b>How Much</b><br>
+                    <input type="number" name="quantity" placeholder="how many order" required>
+                </div>
+
+                <div class="input">
+                    <b>You Order</b><br>
+                    <input name="order_name" placeholder="stock name" required>
+                </div>
+
+                <div class="input">
+                    <b>Address</b><br>
+                    <input name="address" placeholder="you Address" req>
+                </div>
+
+                <button type="submit" value="order book" name="order_book" class="btn" onclick="alert('Thank you for purchasing');">Order Now</button>
+            </form>
+
+        </div>
+
+</section>
+
+<!-- end popup form section -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+<h1 class="heading">contact</h1>
+
+<h1 class="title">contact us for latest updates</h1>
+
+<form action="" method="post">
+
+    <div class="inputBox">
+        <input type="text" name="name" required placeholder="name">
+    </div>
+    <div class="inputBox">
+        <input type="email" name="email" required placeholder="your email">
+        <input type="number" name="number" required placeholder="number">
+    </div>
+    <textarea name="message" id="" cols="30" rows="10" placeholder="message"></textarea>
+
+    <button type="submit" value="send message" name="send" class="btn" onclick="alert('Message was sent successfully');">Send Message</button>
+
+</form>
+
+</section>
+
+<!-- contact section ends -->
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+<div class="box-container">
+
+    <div class="box">
+        <h3>why choose us?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem libero ea repellendus aut commodi, sequi praesentium! Neque aliquam excepturi quas.</p>
+    </div>
+
+    <div class="box">
+        <h3>quick links</h3>
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#product">products</a>
+        <a href="#order">order</a>
+        <a href="#contact">contact</a>
+    </div>
+
+    <div class="box">
+        <h3>contact us</h3>
+        <p> <i class="fas fa-map-marker-alt"></i> Barobo, Surigao del Sur, Philippines </p>
+        <p> <i class="fas fa-globe"></i> www.CodeGeek.com </p>
+        <p> <i class="fas fa-phone"></i> +639383479055 </p>
+    </div>
+
+</div>
+
+<h1 class="credit"> created by <a href="#">Mr. R3D</a> | all rights reserved. </h1>
+
+</section>
+
+<!-- footer section ends -->
+
+
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+</html>
