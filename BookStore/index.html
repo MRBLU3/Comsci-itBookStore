@@ -50,6 +50,27 @@ if(isset($_POST['order_book'])){
  }
 
 ?>
+<?php
+
+if(isset($_POST['add_to_cart'])){
+
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_image = $_POST['product_image'];
+    $product_quantity = $_POST['product_quantity'];
+ 
+    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
+ 
+    if(mysqli_num_rows($check_cart_numbers) > 0){
+       $message[] = 'already added to cart!';
+    }else{
+       mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+       $message[] = 'product added to cart!';
+    }
+ 
+ }
+ 
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +103,7 @@ if(isset($_POST['order_book'])){
             <li><a href="#product">product</a></li>
             <li><a href="#order">Order</a></li>
             <li><a href="#contact">contact</a></li>
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
         </ul>
     </nav>
     
@@ -143,30 +164,9 @@ if(isset($_POST['order_book'])){
 <div class="box-container">
 
     <div class="box">
-        <h3>B-1</h3>
-        <img src="images/item1.jpg" alt="">
-        <span class="price">₱500</span>
-        <a href="#order"><button class="btn">buy now</button></a>
-    </div>
-
-    <div class="box">
-        <h3>B-2</h3>
-        <img src="images/item2.jpg" alt="">
-        <span class="price">₱400</span>
-        <a href="#order"><button class="btn">buy now</button></a>
-    </div>
-
-    <div class="box">
-        <h3>B-3</h3>
-        <img src="images/item3.jpg" alt="">
-        <span class="price">₱600</span>
-        <a href="#order"><button class="btn">buy now</button></a>
-    </div>
-
-    <div class="box">
-        <h3>B-4</h3>
-        <img src="images/item4.jpg" alt="">
-        <span class="price">₱550</span>
+        <h3><?php echo $fetch_products['name']; ?></h3>
+        <img class="image" src="uploads/<?php echo $fetch_products['image']; ?>" alt="">
+        <span class="price">₱<?php echo $fetch_products['price']; ?>/-</span>
         <a href="#order"><button class="btn">buy now</button></a>
     </div>
 
@@ -266,7 +266,7 @@ if(isset($_POST['order_book'])){
 
     <div class="box">
         <h3>why choose us?</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem libero ea repellendus aut commodi, sequi praesentium! Neque aliquam excepturi quas.</p>
+        <p>Choosing CodeGeek can allow you to purchase the best selling books which are great if you're starting in programming.</p>
     </div>
 
     <div class="box">
@@ -287,7 +287,7 @@ if(isset($_POST['order_book'])){
 
 </div>
 
-<h1 class="credit"> created by <a href="#">Mr. R3D</a> | all rights reserved. </h1>
+<h1 class="credit"> created by <a href="https://github.com/MRBLU3">MRBLU3</a> | all rights reserved. </h1>
 
 </section>
 

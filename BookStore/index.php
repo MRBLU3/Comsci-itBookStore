@@ -92,7 +92,7 @@ if(isset($_POST['add_to_cart'])){
 <body>
 <header>
 
-    <a href="index.php" class="logo"><i class="fas fa-code"></i>Code Geek</a>
+    <a href="index.html" class="logo"><i class="fas fa-code"></i>Code Geek</a>
 
     <div id="menu" class="fas fa-bars"></div>
 
@@ -176,12 +176,9 @@ if(isset($_POST['add_to_cart'])){
     <?php
          }
       }else{
-         echo '<p class="empty">no products added yet!</p>';
+         echo '<h1 class="empty">no products added yet!</h1>';
       }
       ?>
-
-    
-
 </div>
 
 </section>
@@ -299,7 +296,7 @@ if(isset($_POST['add_to_cart'])){
 
 </div>
 
-<h1 class="credit"> created by <a href="#">Mr. R3D</a> | all rights reserved. </h1>
+<h1 class="credit"> created by <a href="https://github.com/MRBLU3">MRBLU3</a> | all rights reserved. </h1>
 
 </section>
 

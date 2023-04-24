@@ -1,8 +1,44 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+:root{
+    --blue: #2273F8;
+   --purple:#8e44ad;
+   --red:#ff1900;
+   --orange:#f39c12;
+   --black:#333;
+   --white:#fff;
+   --light-color:#666;
+   --light-white:#ccc;
+   --light-bg:#f5f5f5;
+   --border:.1rem solid var(--black);
+   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Rubik', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition:all .2s linear;
+}
+
+*::selection{
+   background-color: var(--purple);
+   color:var(--white);
+}
+
+*::-webkit-scrollbar{
+   height: .5rem;
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: var(--purple);
 }
 
 .topbar {
@@ -124,6 +160,44 @@ img {
     left: 260px;
     background: #f5f5f5;
 }
+.btn,
+.option-btn,
+.delete-btn,
+.white-btn{
+   display: inline-block;
+   margin-top: 1rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   color:var(--white);
+   font-size: 1.8rem;
+   border-radius: .5rem;
+   text-transform: capitalize;
+}
+
+.btn:hover,
+.option-btn:hover,
+.delete-btn:hover{
+   background-color: var(--black);
+}
+
+.white-btn,
+.btn{
+   background-color: var(--blue);
+}
+
+.option-btn{
+   background-color: var(--blue);
+}
+
+.delete-btn{
+   background-color: var(--red);
+}
+
+.white-btn:hover{
+   background-color: var(--white);
+   color:var(--black);
+}
+
 .main .add-products form{
     background-color: var(--white);
     border-radius: .5rem;
@@ -135,14 +209,14 @@ img {
     margin:0 auto;
  }
  
- .add-products form h3{
+.main .add-products form h3{
     font-size: 2.5rem;
     text-transform: uppercase;
     color:var(--black);
     margin-bottom: 1.5rem;
  }
  
- .add-products form .box{
+ .main .add-products form .box{
     width: 100%;
     background-color: var(--light-bg);
     border-radius: .5rem;
@@ -153,21 +227,21 @@ img {
     border:var(--border);
  }
  
- .show-products .box-container{
+.show-products .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, 30rem);
     justify-content: center;
     gap:1.5rem;
-    max-width: 120px;
+    max-width: 1200px;
     margin:0 auto;
     align-items: flex-start;
  }
  
- .show-products{
-    padding-top: 100px;
+.show-products{
+    padding-top: 10px;
  }
  
- .show-products .box-container .box{
+.show-products .box-container .box{
     text-align: center;
     padding:2rem;
     border-radius: .5rem;
@@ -176,35 +250,34 @@ img {
     background-color: var(--white);
  }
  
- .show-products .box-container .box img{
-    margin-top: 500px;
-    padding-top: 0px;
+.show-products .box-container .box img{
     height: 30rem;
+    width: 20rem;
+    position: inherit;
  }
  
- .show-products .box-container .box .name{
-    margin-top: 150px;
+.show-products .box-container .box .name{
+
     padding:1rem 0;
     font-size: 2rem;
     color:var(--black);
  }
  
- .show-products .box-container .box .price{
-    margin-top: 150px;
+.show-products .box-container .box .price{
+    margin-top: 50px;
     padding:1rem 0;
     font-size: 2.5rem;
     color:var(--red);
  }
- 
  .edit-product-form{
     min-height: 100vh;
     background-color: rgba(0,0,0,.7);
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     padding:2rem;
     overflow-y: scroll;
-    position: fixed;
+    position: inherit;
     top:0; left:0; 
     z-index: 1200;
     width: 100%;
@@ -221,6 +294,7 @@ img {
  .edit-product-form form img{
     height: 25rem;
     margin-bottom: 1rem;
+    position: inherit;
  }
  
  .edit-product-form form .box{
@@ -233,3 +307,4 @@ img {
     color:var(--black);
     width: 100%;
  }
+ 

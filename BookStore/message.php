@@ -36,12 +36,13 @@ if(isset($_GET['delete'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/boostrap.min.css">
     <link rel="stylesheet" href="css/message.css">
     <link rel="icon" href="images/code.png">
-    <title>Document</title>
+    <title>Message</title>
 </head>
 
 <body>
@@ -62,13 +63,13 @@ if(isset($_GET['delete'])){
             <ul>
                 <li>
                     <a href="dashboard.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fas fa-dashboard "></i>
                         <div>Dashboard</div>
                     </a>
                 </li>
                 <li>
-                    <a href="products.php">
-                        <i class="fas fa-user-graduate"></i>
+                    <a href="#">
+                    <i class="fa fa-shopping-cart"></i>
                         <div>Products</div>
                     </a>
                 </li>
@@ -92,7 +93,7 @@ if(isset($_GET['delete'])){
                 </li>
                 <li>
                     <a href="message.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fa-solid fa-message"></i>
                         <div>Message</div>
                     </a>
                 </li>

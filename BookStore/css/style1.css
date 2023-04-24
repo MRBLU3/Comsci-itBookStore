@@ -503,7 +503,7 @@ header #menu{
 
     header .navbar.nav-toggle{
         top:7.4rem;
-        opacity: 1;
+        opacity: 10px;
     }
 
     .home .content{

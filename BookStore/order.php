@@ -41,7 +41,7 @@ if(isset($_GET['delete'])){
     <link rel="stylesheet" href="css/boostrap.min.css">
     <link rel="stylesheet" href="css/message.css">
     <link rel="icon" href="images/code.png">
-    <title>Document</title>
+    <title>Order</title>
 </head>
 
 <body>
@@ -62,13 +62,13 @@ if(isset($_GET['delete'])){
             <ul>
                 <li>
                     <a href="dashboard.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fas fa-dashboard "></i>
                         <div>Dashboard</div>
                     </a>
                 </li>
                 <li>
                     <a href="products.php">
-                        <i class="fas fa-user-graduate"></i>
+                    <i class="fa fa-shopping-cart"></i>
                         <div>Products</div>
                     </a>
                 </li>
@@ -92,7 +92,7 @@ if(isset($_GET['delete'])){
                 </li>
                 <li>
                     <a href="message.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fa-solid fa-message"></i>
                         <div>Message</div>
                     </a>
                 </li>

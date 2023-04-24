@@ -1,8 +1,8 @@
 <?php
-
+include "conn.php";
 include "ck_session.php";
 if(!isSessionAction()){
-    header("location: dashboard.php");
+    header("location: admin.php");
 }
 
 
@@ -15,6 +15,7 @@ if(!isSessionAction()){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/dash.css">
     <link rel="icon" href="images/code.png">
@@ -40,13 +41,13 @@ if(!isSessionAction()){
             <ul>
                 <li>
                     <a href="dashboard.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fas fa-dashboard "></i>
                         <div>Dashboard</div>
                     </a>
                 </li>
                 <li>
                     <a href="products.php">
-                        <i class="fa fa-product-hunt"></i>
+                    <i class="fa fa-shopping-cart"></i>
                         <div>Products</div>
                     </a>
                 </li>
@@ -70,7 +71,7 @@ if(!isSessionAction()){
                 </li>
                 <li>
                     <a href="message.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fa-solid fa-message"></i>
                         <div>Message</div>
                     </a>
                 </li>
@@ -84,33 +85,45 @@ if(!isSessionAction()){
         </div>
         <div class="main">
             <div class="cards">
-                <div class="card">
+                <a href="products.php"><div class="card">
                     <div class="card-content">
-                        <div class="number">4</div>
+                    <?php  
+         $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
+         $count = mysqli_num_rows($select_products);
+      ?>
+                        <div class="number"><?php echo $count; ?></div>
                         <div class="card-name">Products</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-user-graduate"></i>
+                    <i class="fa fa-shopping-cart"></i>
                     </div>
-                </div>
-                <div class="card">
+                </div></a>
+                <a href="order.php"><div class="card">
                     <div class="card-content">
-                        <div class="number">5</div>
+                    <?php  
+         $select_order = mysqli_query($conn, "SELECT * FROM `orderdb`") or die('query failed');
+         $count = mysqli_num_rows($select_order);
+      ?>
+                        <div class="number"><?php echo $count; ?></div>
                         <div class="card-name">Orders</div>
                     </div>
                     <div class="icon-box">
                         <i class="fas fa-users"></i>
                     </div>
-                </div>
-                <div class="card">
+                </div></a>
+                <a href="message.php"><div class="card">
                     <div class="card-content">
-                        <div class="number">1</div>
-                        <div class="card-name">Admin</div>
+                    <?php  
+         $select_message = mysqli_query($conn, "SELECT * FROM `message`") or die('query failed');
+         $count = mysqli_num_rows($select_message);
+      ?>
+                        <div class="number"><?php echo $count; ?></div>
+                        <div class="card-name">Message</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-message"></i>
                     </div>
-                </div>
+                </div></a>
                 <div class="card">
                     <div class="card-content">
                         <div class="number">₱2000</div>

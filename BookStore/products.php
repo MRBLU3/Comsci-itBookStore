@@ -84,12 +84,13 @@ if(isset($_POST['add_product'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Products</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/boostrap.min.css">
+    
     <link rel="stylesheet" href="css/product.css">
     <link rel="icon" href="images/code.png">
-    <title>Document</title>
+    
 </head>
 
 <body>
@@ -110,13 +111,13 @@ if(isset($_POST['add_product'])){
             <ul>
                 <li>
                     <a href="dashboard.php">
-                        <i class="fas fa-th-large"></i>
+                  <i class="fa fa-shopping-cart"></i>
                         <div>Dashboard</div>
                     </a>
                 </li>
                 <li>
                     <a href="products.php">
-                        <i class="fas fa-user-graduate"></i>
+                    <i class="fa fa-shopping-cart"></i>
                         <div>Products</div>
                     </a>
                 </li>
@@ -140,7 +141,7 @@ if(isset($_POST['add_product'])){
                 </li>
                 <li>
                     <a href="message.php">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fa-solid fa-message"></i>
                         <div>Message</div>
                     </a>
                 </li>
@@ -152,10 +153,10 @@ if(isset($_POST['add_product'])){
                 </li>
             </ul>
         </div>
+        
         <div class="main">
-        <section class="add-products">
 
-<h1 class="title">shop products</h1>
+        <section class="add-products">
 
 <form action="" method="post" enctype="multipart/form-data">
    <h3>add product</h3>
@@ -184,13 +185,13 @@ if(isset($_POST['add_product'])){
       <img src="uploads/<?php echo $fetch_products['image']; ?>" alt="">
       <div class="name"><?php echo $fetch_products['name']; ?></div>
       <div class="price">₱<?php echo $fetch_products['price']; ?>/-</div>
-      <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
+      <a href="products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
       <a href="products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
    </div>
    <?php
       }
    }else{
-      echo '<p class="empty">no products added yet!</p>';
+      echo '<center><h1 class="empty">no products added yet!</h1>';
    }
    ?>
 </div>
@@ -199,38 +200,35 @@ if(isset($_POST['add_product'])){
 
 <section class="edit-product-form">
 
-<?php
-   if(isset($_GET['update'])){
-      $update_id = $_GET['update'];
-      $update_query = mysqli_query($conn, "SELECT * FROM `products` WHERE id = '$update_id'") or die('query failed');
-      if(mysqli_num_rows($update_query) > 0){
-         while($fetch_update = mysqli_fetch_assoc($update_query)){
-?>
-<form action="" method="post" enctype="multipart/form-data">
-   <input type="hidden" name="update_p_id" value="<?php echo $fetch_update['id']; ?>">
-   <input type="hidden" name="update_old_image" value="<?php echo $fetch_update['image']; ?>">
-   <img src="uploads/<?php echo $fetch_update['image']; ?>" alt="">
-   <input type="text" name="update_name" value="<?php echo $fetch_update['name']; ?>" class="box" required placeholder="enter product name">
-   <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0" class="box" required placeholder="enter product price">
-   <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
-   <input type="submit" value="update" name="update_product" class="btn">
-   <input type="reset" value="cancel" id="close-update" class="option-btn">
-</form>
-<?php
+   <?php
+      if(isset($_GET['update'])){
+         $update_id = $_GET['update'];
+         $update_query = mysqli_query($conn, "SELECT * FROM `products` WHERE id = '$update_id'") or die('query failed');
+         if(mysqli_num_rows($update_query) > 0){
+            while($fetch_update = mysqli_fetch_assoc($update_query)){
+   ?>
+   <form action="" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="update_p_id" value="<?php echo $fetch_update['id']; ?>">
+      <input type="hidden" name="update_old_image" value="<?php echo $fetch_update['image']; ?>">
+      <img src="uploads/<?php echo $fetch_update['image']; ?>" alt="">
+      <input type="text" name="update_name" value="<?php echo $fetch_update['name']; ?>" class="box" required placeholder="enter product name">
+      <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0" class="box" required placeholder="enter product price">
+      <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
+      <input type="submit" value="update" name="update_product" class="btn">
+      <a href="products.php" class="option-btn">CANCEL</a>
+   </form>
+   <?php
+            }
       }
-   }
-   }else{
-      echo '<script>document.querySelector(".edit-product-form").style.display = "none";</script>';
-   }
-?>
+      }else{
+         echo '<script>document.querySelector(".edit-product-form").style.display = "none";</script>';
+      }
+   ?>
 
 </section>
 
-        </div>
-            </div>
 </div>
-
-<script src="js/admin_script.js"></script>
+</div>
 </body>
 
 </html>

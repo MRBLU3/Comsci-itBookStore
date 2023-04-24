@@ -6,6 +6,7 @@ $userName = $_POST['username'];
 $passWord = $_POST['password'];
 
 
+// # This is Anti sql injection
 $userName = stripslashes($userName);
 $passWord = stripslashes($passWord);
 $userName = mysqli_real_escape_string($conn, $userName);
